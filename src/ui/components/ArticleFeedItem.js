@@ -17,4 +17,16 @@ export class ArticleFeedItem extends BaseComponent {
       },
     );
   }
+
+  async assertArticleLinkIsVisibleAfterReload(title) {
+    await this.step(
+      `Assert article "${title}" is visible (with reload)`,
+      async () => {
+        await expect(async () => {
+          await this.page.reload();
+          await expect(this.articleLink(title)).toBeVisible({ timeout: 3000 });
+        }).toPass({ timeout: 20000 });
+      },
+    );
+  }
 }
