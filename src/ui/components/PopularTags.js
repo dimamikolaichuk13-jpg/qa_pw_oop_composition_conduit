@@ -7,7 +7,7 @@ export class PopularTags extends BaseComponent {
   }
 
   tagLink(tag) {
-    return this.page.locator('.tag-list .tag-pill').filter({ hasText: tag });
+    return this.page.locator('.tag-list').getByText(tag, { exact: true });
   }
 
   async clickTag(tag) {

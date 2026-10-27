@@ -23,9 +23,15 @@ test(`Logged-in user can find own article by Tag from the Popular tags section a
   await createArticlePage.fillTagsField(article.tags);
   await createArticlePage.clickPublishArticleButton();
 
-  await internalViewArticlePage.assertArticleTitleIsVisible(article.title);
-  await internalViewArticlePage.assertArticleTextIsVisible(article.text);
-  await internalViewArticlePage.assertArticleTagsAreVisible(article.tags);
+  await internalViewArticlePage.articleContent.assertArticleTitleIsVisible(
+    article.title,
+  );
+  await internalViewArticlePage.articleContent.assertArticleTextIsVisible(
+    article.text,
+  );
+  await internalViewArticlePage.articleContent.assertArticleTagsAreVisible(
+    article.tags,
+  );
 
   await internalHomePage.header.clickConduitLogo();
   await internalHomePage.open();

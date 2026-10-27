@@ -22,8 +22,12 @@ test('Logged-in user can view own article in the Global Feed section', async ({
   await createArticlePage.fillTextField(article.text);
   await createArticlePage.clickPublishArticleButton();
 
-  await internalViewArticlePage.assertArticleTitleIsVisible(article.title);
-  await internalViewArticlePage.assertArticleTextIsVisible(article.text);
+  await internalViewArticlePage.articleContent.assertArticleTitleIsVisible(
+    article.title,
+  );
+  await internalViewArticlePage.articleContent.assertArticleTextIsVisible(
+    article.text,
+  );
 
   await internalHomePage.header.clickConduitLogo();
   await internalHomePage.globalFeed.open();

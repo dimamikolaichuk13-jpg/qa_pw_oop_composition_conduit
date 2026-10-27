@@ -11,7 +11,9 @@ export async function createArticle(page, article, userId = 0) {
 
       await createArticlePage.open();
       await createArticlePage.submitCreateArticleForm(article);
-      await internalViewArticlePage.assertArticleTitleIsVisible(article.title);
+      await internalViewArticlePage.articleContent.assertArticleTitleIsVisible(
+        article.title,
+      );
 
       return internalViewArticlePage.getCurrentPageUrl();
     },
