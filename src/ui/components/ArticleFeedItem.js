@@ -29,4 +29,16 @@ export class ArticleFeedItem extends BaseComponent {
       },
     );
   }
+
+  articleLink(title) {
+    return this.page.getByRole('link', {
+      name: `Article title: ${title}`,
+    });
+  }
+
+  async openArticle(title) {
+    await this.step(`Open article "${title}"`, async () => {
+      await this.articleLink(title).click();
+    });
+  }
 }

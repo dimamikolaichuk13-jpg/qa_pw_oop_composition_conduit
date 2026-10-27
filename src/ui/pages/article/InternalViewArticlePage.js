@@ -1,7 +1,7 @@
 import { expect } from '../../../common/helpers/pw';
 import { BasePage } from '../BasePage';
 
-export class ViewArticlePage extends BasePage {
+export class InternalViewArticlePage extends BasePage {
   articleId;
 
   constructor(page, userId = 0) {

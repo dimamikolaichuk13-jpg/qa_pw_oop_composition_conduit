@@ -13,7 +13,7 @@ test.beforeEach(async ({ page, user, logger }) => {
 test(`Logged-in user can find own article by Tag from the Popular tags section and view in the Tag'Feed`, async ({
   internalHomePage,
   createArticlePage,
-  viewArticlePage,
+  internalViewArticlePage,
 }) => {
   await internalHomePage.header.clickNewArticleLink();
 
@@ -23,9 +23,9 @@ test(`Logged-in user can find own article by Tag from the Popular tags section a
   await createArticlePage.fillTagsField(article.tags);
   await createArticlePage.clickPublishArticleButton();
 
-  await viewArticlePage.assertArticleTitleIsVisible(article.title);
-  await viewArticlePage.assertArticleTextIsVisible(article.text);
-  await viewArticlePage.assertArticleTagsAreVisible(article.tags);
+  await internalViewArticlePage.assertArticleTitleIsVisible(article.title);
+  await internalViewArticlePage.assertArticleTextIsVisible(article.text);
+  await internalViewArticlePage.assertArticleTagsAreVisible(article.tags);
 
   await internalHomePage.header.clickConduitLogo();
   await internalHomePage.open();
